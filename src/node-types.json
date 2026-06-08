@@ -58,6 +58,10 @@
           "named": true
         },
         {
+          "type": "error_statement",
+          "named": true
+        },
+        {
           "type": "exit_statement",
           "named": true
         },
@@ -82,7 +86,15 @@
           "named": true
         },
         {
+          "type": "label_statement",
+          "named": true
+        },
+        {
           "type": "let_statement",
+          "named": true
+        },
+        {
+          "type": "mid_statement",
           "named": true
         },
         {
@@ -240,6 +252,40 @@
     }
   },
   {
+    "type": "else_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "elseif_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "enum_statement",
     "named": true,
     "fields": {},
@@ -264,6 +310,21 @@
     "fields": {},
     "children": {
       "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "error_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
       "required": true,
       "types": [
         {
@@ -433,7 +494,30 @@
           "named": true
         },
         {
+          "type": "else_clause",
+          "named": true
+        },
+        {
+          "type": "elseif_clause",
+          "named": true
+        },
+        {
           "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "label_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -476,6 +560,25 @@
         },
         {
           "type": "primary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "mid_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -835,6 +938,10 @@
   },
   {
     "type": "0",
+    "named": false
+  },
+  {
+    "type": ":",
     "named": false
   },
   {

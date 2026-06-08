@@ -1,0 +1,35 @@
+===================
+With Statement
+===================
+Sub Test()
+    With ActiveWorkbook
+        .Name = "Test"
+    End With
+End Sub
+---
+(source_file
+  (sub_statement
+    (identifier)
+    (block
+      (with_statement
+        (expression
+          (binary_expression
+            (expression
+              (member_expression
+                (primary_expression
+                  (identifier)
+                )
+                (identifier)
+              )
+            )
+            (expression
+              (primary_expression
+                (string_literal)
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)

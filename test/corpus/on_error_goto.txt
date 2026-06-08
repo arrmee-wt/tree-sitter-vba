@@ -1,0 +1,29 @@
+===================
+On Error GoTo
+===================
+Sub Test()
+    On Error GoTo ErrHandler
+    Exit Sub
+ErrHandler:
+    Resume Next
+End Sub
+---
+(source_file
+  (sub_statement
+    (identifier)
+    (block
+      (on_error_statement
+        (expression
+          (primary_expression
+            (identifier)
+          )
+        )
+      )
+      (exit_statement)
+      (label_statement
+        (identifier)
+      )
+      (resume_statement)
+    )
+  )
+)

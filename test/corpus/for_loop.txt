@@ -1,0 +1,51 @@
+===================
+For Loop
+===================
+Sub Test()
+    Dim i As Integer
+    For i = 1 To 10
+        Debug.Print i
+    Next
+End Sub
+---
+(source_file
+  (sub_statement
+    (identifier)
+    (block
+      (dim_statement
+        (identifier)
+        (type
+          (identifier)
+        )
+      )
+      (for_statement
+        (identifier)
+        (expression
+          (primary_expression
+            (number_literal)
+          )
+        )
+        (expression
+          (primary_expression
+            (number_literal)
+          )
+        )
+        (block
+          (expression
+            (member_expression
+              (primary_expression
+                (identifier)
+              )
+              (identifier)
+            )
+          )
+          (expression
+            (primary_expression
+              (identifier)
+            )
+          )
+        )
+      )
+    )
+  )
+)

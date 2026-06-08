@@ -95,7 +95,9 @@ module.exports = grammar({
       $.erase_statement, $.redim_statement,
       $.set_statement, $.let_statement, $.call_statement,
       $.exit_statement, $.goto_statement,
-      $.dim_statement, $.const_statement, $.expression,
+      $.dim_statement, $.const_statement,
+      $.label_statement, $.error_statement, $.mid_statement,
+      $.expression,
     )),
 
     _statement: $ => choice(
@@ -106,18 +108,27 @@ module.exports = grammar({
       $.set_statement, $.let_statement, $.call_statement,
       $.exit_statement, $.goto_statement,
       $.dim_statement, $.const_statement,
+      $.label_statement, $.error_statement, $.mid_statement,
       $.expression,
+    ),
+
+    label_statement: $ => seq($.identifier, ':'),
+
+    error_statement: $ => seq(ci('Error'), $.expression),
+
+    mid_statement: $ => seq(
+      ci('Mid'), '(', $.identifier, ',', $.expression, ',', $.expression, ')', '=', $.expression,
     ),
 
     if_statement: $ => seq(
       ci('If'), $.expression, ci('Then'),
       $.block,
-      repeat($._elseif_block),
-      optional($._else_block),
+      repeat($.elseif_clause),
+      optional($.else_clause),
       ci('End'), ci('If'),
     ),
-    _elseif_block: $ => seq(ci('ElseIf'), $.expression, ci('Then'), $.block),
-    _else_block: $ => seq(ci('Else'), $.block),
+    elseif_clause: $ => seq(ci('ElseIf'), $.expression, ci('Then'), $.block),
+    else_clause: $ => seq(ci('Else'), $.block),
 
     for_statement: $ => seq(
       ci('For'), $.identifier, '=', $.expression, ci('To'), $.expression,

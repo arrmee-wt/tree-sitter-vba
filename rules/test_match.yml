@@ -1,0 +1,4 @@
+id: test-match
+language: vba
+rule:
+  pattern: Sub

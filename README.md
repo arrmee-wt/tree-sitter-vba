@@ -2,6 +2,8 @@
 
 A [Tree-sitter](https://tree-sitter.github.io/) grammar for **Visual Basic for Applications (VBA)**.
 
+[![Test](https://github.com/arrmee-wt/tree-sitter-vba/actions/workflows/test.yml/badge.svg)](https://github.com/arrmee-wt/tree-sitter-vba/actions/workflows/test.yml)
+
 Fills the gap of the long-missing tree-sitter VBA parser — the only production-ready open-source VBA grammar for tree-sitter.
 
 ## Features

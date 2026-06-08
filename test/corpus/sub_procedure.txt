@@ -1,0 +1,35 @@
+===================
+Sub Procedure
+===================
+Sub Hello()
+    Dim msg As String
+    msg = "Hello World"
+End Sub
+---
+(source_file
+  (sub_statement
+    (identifier)
+    (block
+      (dim_statement
+        (identifier)
+        (type
+          (identifier)
+        )
+      )
+      (expression
+        (binary_expression
+          (expression
+            (primary_expression
+              (identifier)
+            )
+          )
+          (expression
+            (primary_expression
+              (string_literal)
+            )
+          )
+        )
+      )
+    )
+  )
+)

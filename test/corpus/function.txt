@@ -1,0 +1,44 @@
+===================
+Function
+===================
+Function Add(x As Integer) As Integer
+    Add = x + 1
+End Function
+---
+(source_file
+  (function_statement
+    (identifier)
+    (identifier)
+    (type
+      (identifier)
+    )
+    (type
+      (identifier)
+    )
+    (block
+      (expression
+        (binary_expression
+          (expression
+            (binary_expression
+              (expression
+                (primary_expression
+                  (identifier)
+                )
+              )
+              (expression
+                (primary_expression
+                  (identifier)
+                )
+              )
+            )
+          )
+          (expression
+            (primary_expression
+              (number_literal)
+            )
+          )
+        )
+      )
+    )
+  )
+)

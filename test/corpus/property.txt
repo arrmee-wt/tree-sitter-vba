@@ -1,0 +1,31 @@
+===================
+Property
+===================
+Property Get Name() As String
+    Name = m_Name
+End Property
+---
+(source_file
+  (property_statement
+    (identifier)
+    (type
+      (identifier)
+    )
+    (block
+      (expression
+        (binary_expression
+          (expression
+            (primary_expression
+              (identifier)
+            )
+          )
+          (expression
+            (primary_expression
+              (identifier)
+            )
+          )
+        )
+      )
+    )
+  )
+)

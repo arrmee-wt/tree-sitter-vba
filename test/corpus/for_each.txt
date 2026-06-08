@@ -1,0 +1,46 @@
+===================
+For Each
+===================
+Sub Test()
+    Dim c As Variant
+    For Each c In Collection
+        Debug.Print c
+    Next
+End Sub
+---
+(source_file
+  (sub_statement
+    (identifier)
+    (block
+      (dim_statement
+        (identifier)
+        (type
+          (identifier)
+        )
+      )
+      (for_each_statement
+        (identifier)
+        (expression
+          (primary_expression
+            (identifier)
+          )
+        )
+        (block
+          (expression
+            (member_expression
+              (primary_expression
+                (identifier)
+              )
+              (identifier)
+            )
+          )
+          (expression
+            (primary_expression
+              (identifier)
+            )
+          )
+        )
+      )
+    )
+  )
+)

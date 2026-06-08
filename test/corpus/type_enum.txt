@@ -1,0 +1,30 @@
+===================
+Type Enum
+===================
+Private Type Person
+    Name As String
+End Type
+Public Enum Color
+    Red
+    Blue = 5
+End Enum
+---
+(source_file
+  (type_statement
+    (identifier)
+    (identifier)
+    (type
+      (identifier)
+    )
+  )
+  (enum_statement
+    (identifier)
+    (identifier)
+    (identifier)
+    (expression
+      (primary_expression
+        (number_literal)
+      )
+    )
+  )
+)

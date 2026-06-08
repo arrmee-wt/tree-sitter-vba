@@ -837,6 +837,18 @@
           },
           {
             "type": "SYMBOL",
+            "name": "label_statement"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "error_statement"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "mid_statement"
+          },
+          {
+            "type": "SYMBOL",
             "name": "expression"
           }
         ]
@@ -919,6 +931,91 @@
         },
         {
           "type": "SYMBOL",
+          "name": "label_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "error_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "mid_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        }
+      ]
+    },
+    "label_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        }
+      ]
+    },
+    "error_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "Error",
+          "flags": "i"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        }
+      ]
+    },
+    "mid_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "Mid",
+          "flags": "i"
+        },
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
           "name": "expression"
         }
       ]
@@ -948,7 +1045,7 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "_elseif_block"
+            "name": "elseif_clause"
           }
         },
         {
@@ -956,7 +1053,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_else_block"
+              "name": "else_clause"
             },
             {
               "type": "BLANK"
@@ -975,7 +1072,7 @@
         }
       ]
     },
-    "_elseif_block": {
+    "elseif_clause": {
       "type": "SEQ",
       "members": [
         {
@@ -998,7 +1095,7 @@
         }
       ]
     },
-    "_else_block": {
+    "else_clause": {
       "type": "SEQ",
       "members": [
         {

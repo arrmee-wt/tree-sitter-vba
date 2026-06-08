@@ -1,0 +1,94 @@
+===================
+If-ElseIf-Else
+===================
+Sub Test(x As Integer)
+    If x > 10 Then
+        MsgBox "big"
+    ElseIf x > 5 Then
+        MsgBox "medium"
+    Else
+        MsgBox "small"
+    End If
+End Sub
+---
+(source_file
+  (sub_statement
+    (identifier)
+    (identifier)
+    (type
+      (identifier)
+    )
+    (block
+      (if_statement
+        (expression
+          (binary_expression
+            (expression
+              (primary_expression
+                (identifier)
+              )
+            )
+            (expression
+              (primary_expression
+                (number_literal)
+              )
+            )
+          )
+        )
+        (block
+          (expression
+            (primary_expression
+              (identifier)
+            )
+          )
+          (expression
+            (primary_expression
+              (string_literal)
+            )
+          )
+        )
+        (elseif_clause
+          (expression
+            (binary_expression
+              (expression
+                (primary_expression
+                  (identifier)
+                )
+              )
+              (expression
+                (primary_expression
+                  (number_literal)
+                )
+              )
+            )
+          )
+          (block
+            (expression
+              (primary_expression
+                (identifier)
+              )
+            )
+            (expression
+              (primary_expression
+                (string_literal)
+              )
+            )
+          )
+        )
+        (else_clause
+          (block
+            (expression
+              (primary_expression
+                (identifier)
+              )
+            )
+            (expression
+              (primary_expression
+                (string_literal)
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
