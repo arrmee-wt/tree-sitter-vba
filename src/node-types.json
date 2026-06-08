@@ -471,6 +471,10 @@
           "named": true
         },
         {
+          "type": "member_expression",
+          "named": true
+        },
+        {
           "type": "primary_expression",
           "named": true
         }
@@ -644,6 +648,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "const_statement",
+          "named": true
+        },
         {
           "type": "declare_statement",
           "named": true

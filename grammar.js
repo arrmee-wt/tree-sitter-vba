@@ -31,6 +31,7 @@ module.exports = grammar({
       $.option_statement, $.declare_statement,
       $.sub_statement, $.function_statement,
       $.property_statement, $.type_statement, $.enum_statement,
+      $.const_statement,
     ),
 
     option_statement: $ => seq(ci('Option'), choice(ci('Explicit'), ci('Compare'), ci('Base'), ci('Private'))),
@@ -183,7 +184,7 @@ module.exports = grammar({
     ),
 
     member_expression: $ => prec.left(0, seq(
-      choice($.primary_expression, $.function_call),
+      choice($.primary_expression, $.function_call, $.member_expression),
       '.', $.identifier,
     )),
 

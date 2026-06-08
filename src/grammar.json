@@ -59,6 +59,10 @@
         {
           "type": "SYMBOL",
           "name": "enum_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "const_statement"
         }
       ]
     },
@@ -1977,6 +1981,10 @@
               {
                 "type": "SYMBOL",
                 "name": "function_call"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "member_expression"
               }
             ]
           },
