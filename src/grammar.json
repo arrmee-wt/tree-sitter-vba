@@ -83,19 +83,72 @@
               "flags": "i"
             },
             {
-              "type": "PATTERN",
-              "value": "Compare",
-              "flags": "i"
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "PATTERN",
+                  "value": "Compare",
+                  "flags": "i"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "PATTERN",
+                      "value": "Binary",
+                      "flags": "i"
+                    },
+                    {
+                      "type": "PATTERN",
+                      "value": "Text",
+                      "flags": "i"
+                    },
+                    {
+                      "type": "PATTERN",
+                      "value": "Database",
+                      "flags": "i"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "type": "PATTERN",
-              "value": "Base",
-              "flags": "i"
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "PATTERN",
+                  "value": "Base",
+                  "flags": "i"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "0"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "1"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "type": "PATTERN",
-              "value": "Private",
-              "flags": "i"
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "PATTERN",
+                  "value": "Private",
+                  "flags": "i"
+                },
+                {
+                  "type": "PATTERN",
+                  "value": "Module",
+                  "flags": "i"
+                }
+              ]
             }
           ]
         }
@@ -2038,7 +2091,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "assignment_expression"
+          "name": "unary_expression"
         },
         {
           "type": "SYMBOL",
@@ -2046,7 +2099,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "unary_expression"
+          "name": "call_expression"
         },
         {
           "type": "SYMBOL",
@@ -2062,9 +2115,51 @@
         }
       ]
     },
+    "call_expression": {
+      "type": "PREC_LEFT",
+      "value": 5,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "member_expression"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "function_call"
+              }
+            ]
+          },
+          {
+            "type": "STRING",
+            "value": "("
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_arg_expression_list"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "STRING",
+            "value": ")"
+          }
+        ]
+      }
+    },
     "member_expression": {
       "type": "PREC_LEFT",
-      "value": 0,
+      "value": 10,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2078,6 +2173,10 @@
               {
                 "type": "SYMBOL",
                 "name": "function_call"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "call_expression"
               },
               {
                 "type": "SYMBOL",
@@ -2528,10 +2627,6 @@
     }
   ],
   "conflicts": [
-    [
-      "assignment_expression",
-      "binary_expression"
-    ],
     [
       "function_call",
       "primary_expression"

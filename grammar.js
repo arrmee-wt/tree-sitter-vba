@@ -16,7 +16,6 @@ module.exports = grammar({
   extras: $ => [/\s/, $.comment, $._line_continuation],
 
   conflicts: $ => [
-    [$.assignment_expression, $.binary_expression],
     [$.function_call, $.primary_expression],
     [$.dim_statement],
   ],
@@ -34,7 +33,15 @@ module.exports = grammar({
       $.const_statement,
     ),
 
-    option_statement: $ => seq(ci('Option'), choice(ci('Explicit'), ci('Compare'), ci('Base'), ci('Private'))),
+    option_statement: $ => seq(
+      ci('Option'),
+      choice(
+        ci('Explicit'),
+        seq(ci('Compare'), choice(ci('Binary'), ci('Text'), ci('Database'))),
+        seq(ci('Base'), choice('0', '1')),
+        seq(ci('Private'), ci('Module')),
+      ),
+    ),
 
     declare_statement: $ => seq(
       optional(choice(ci('Public'), ci('Private'))),
@@ -190,12 +197,21 @@ module.exports = grammar({
 
     // === Expressions ===
     expression: $ => choice(
-      $.assignment_expression, $.binary_expression, $.unary_expression,
-      $.member_expression, $.function_call, $.primary_expression,
+      $.unary_expression,
+      $.binary_expression,
+      $.call_expression,
+      $.member_expression,
+      $.function_call,
+      $.primary_expression,
     ),
 
-    member_expression: $ => prec.left(0, seq(
-      choice($.primary_expression, $.function_call, $.member_expression),
+    call_expression: $ => prec.left(5, seq(
+      choice($.member_expression, $.function_call),
+      '(', optional($._arg_expression_list), ')',
+    )),
+
+    member_expression: $ => prec.left(10, seq(
+      choice($.primary_expression, $.function_call, $.call_expression, $.member_expression),
       '.', $.identifier,
     )),
 
