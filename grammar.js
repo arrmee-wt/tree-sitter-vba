@@ -18,6 +18,7 @@ module.exports = grammar({
   conflicts: $ => [
     [$.assignment_expression, $.binary_expression],
     [$.function_call, $.primary_expression],
+    [$.dim_statement],
   ],
 
   rules: {
@@ -44,14 +45,14 @@ module.exports = grammar({
     sub_statement: $ => seq(
       optional(choice(ci('Public'), ci('Private'), ci('Friend'), ci('Static'))),
       ci('Sub'), $.identifier, $._arg_list,
-      optional(optional($.block)), ci('End'), ci('Sub'),
+      optional($.block), ci('End'), ci('Sub'),
     ),
 
     function_statement: $ => seq(
       optional(choice(ci('Public'), ci('Private'), ci('Friend'), ci('Static'))),
       ci('Function'), $.identifier, $._arg_list,
       optional(seq(ci('As'), $.type)),
-      optional(optional($.block)), ci('End'), ci('Function'),
+      optional($.block), ci('End'), ci('Function'),
     ),
 
     property_statement: $ => seq(
@@ -59,7 +60,7 @@ module.exports = grammar({
       ci('Property'), choice(ci('Get'), ci('Let'), ci('Set')),
       $.identifier, $._arg_list,
       optional(seq(ci('As'), $.type)),
-      optional(optional($.block)), ci('End'), ci('Property'),
+      optional($.block), ci('End'), ci('Property'),
     ),
 
     type_statement: $ => seq(
@@ -109,11 +110,13 @@ module.exports = grammar({
 
     if_statement: $ => seq(
       ci('If'), $.expression, ci('Then'),
-      $.block, repeat($._elseif_block), optional($._else_block),
+      $.block,
+      repeat($._elseif_block),
+      optional($._else_block),
       ci('End'), ci('If'),
     ),
-    _elseif_block: $ => seq(ci('ElseIf'), $.expression, ci('Then'), optional($.block)),
-    _else_block: $ => seq(ci('Else'), optional($.block)),
+    _elseif_block: $ => seq(ci('ElseIf'), $.expression, ci('Then'), $.block),
+    _else_block: $ => seq(ci('Else'), $.block),
 
     for_statement: $ => seq(
       ci('For'), $.identifier, '=', $.expression, ci('To'), $.expression,
@@ -123,15 +126,15 @@ module.exports = grammar({
 
     for_each_statement: $ => seq(
       ci('For'), ci('Each'), $.identifier, ci('In'), $.expression,
-      optional(optional($.block)), ci('Next'),
+      optional($.block), ci('Next'),
     ),
 
-    while_statement: $ => seq(ci('While'), $.expression, optional(optional($.block)), ci('Wend')),
+    while_statement: $ => seq(ci('While'), $.expression, optional($.block), ci('Wend')),
     do_statement: $ => choice(
-      seq(ci('Do'), choice(ci('While'), ci('Until')), $.expression, optional(optional($.block)), ci('Loop')),
-      seq(ci('Do'), optional(optional($.block)), ci('Loop'), choice(ci('While'), ci('Until')), $.expression),
+      seq(ci('Do'), choice(ci('While'), ci('Until')), $.expression, optional($.block), ci('Loop')),
+      seq(ci('Do'), optional($.block), ci('Loop'), choice(ci('While'), ci('Until')), $.expression),
     ),
-    with_statement: $ => seq(ci('With'), $.expression, optional(optional($.block)), ci('End'), ci('With')),
+    with_statement: $ => seq(ci('With'), $.expression, optional($.block), ci('End'), ci('With')),
 
     select_case_statement: $ => seq(
       ci('Select'), ci('Case'), $.expression,
@@ -142,7 +145,11 @@ module.exports = grammar({
 
     on_error_statement: $ => seq(
       ci('On'), ci('Error'),
-      choice(seq(ci('GoTo'), $.expression), seq(ci('Resume'), ci('Next'))),
+      choice(
+        seq(ci('GoTo'), $.expression),
+        seq(ci('Resume'), ci('Next')),
+        seq(ci('GoTo'), '0'),
+      ),
     ),
     resume_statement: $ => seq(ci('Resume'), choice(ci('Next'), $.expression)),
     erase_statement: $ => seq(ci('Erase'), $.expression, repeat(seq(',', $.expression))),
@@ -155,10 +162,14 @@ module.exports = grammar({
 
     dim_statement: $ => seq(
       choice(ci('Dim'), ci('Public'), ci('Private'), ci('Static')),
-      $.identifier, optional(seq(ci('As'), $.type)),
+      $.identifier,
+      optional($._array_dim),
+      optional(seq(ci('As'), $.type)),
       optional(seq('=', $.expression)),
-      repeat(seq(',', $.identifier, optional(seq(ci('As'), $.type)))),
+      repeat(seq(',', $.identifier, optional($._array_dim), optional(seq(ci('As'), $.type)))),
     ),
+
+    _array_dim: $ => seq('(', optional(seq($.expression, repeat(seq(',', $.expression)))), ')'),
 
     const_statement: $ => seq(
       optional(choice(ci('Public'), ci('Private'))),
