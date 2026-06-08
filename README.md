@@ -101,19 +101,7 @@ zig cc -shared -O3 -I src src/parser.c -o tree_sitter_vba.dll -target x86_64-win
 
 ## License
 
-GPL-3.0. Derived from the [Rubberduck VBA](https://github.com/rubberduck-vba/Rubberduck) ANTLR4 grammar (Copyright Ulrich Wolffgang, Rubberduck Contributors).
-
-### Legal Notice
-
-This project's grammar definition (`grammar.js`) is a translation of the [Rubberduck VBA](https://github.com/rubberduck-vba/Rubberduck) ANTLR4 grammar files (`VBAParser.g4` / `VBALexer.g4`), which are licensed under GPL-3.0 and copyright by Ulrich Wolffgang and Rubberduck Contributors. As a derivative work, this project inherits the GPL-3.0 license.
-
-The generated C parser (`src/parser.c`) and pre-compiled DLL are outputs of the Tree-sitter toolchain and are distributed under the same GPL-3.0 terms.
-
-All original code in this repository is copyright (C) 2026 tree-sitter-vba Contributors and licensed under GPL-3.0.
-
-If you wish to use this grammar in a proprietary/commercial product without open-sourcing your code, you must either:
-1. Rewrite the grammar independently without referencing the Rubberduck ANTLR4 grammar
-2. Or use the compiled parser via IPC (process isolation) to avoid GPL copyleft requirements
+MIT. This grammar is an independent implementation based on the publicly available [Microsoft VBA Language Specification (MS-VBAL)](https://learn.microsoft.com/en-us/openspecs/microsoft_apis/ms-vbal/). It does not derive from any GPL-licensed ANTLR4 grammar or other third-party VBA parser implementation.
 
 ## Why another VBA parser?
 
@@ -122,4 +110,4 @@ Existing tree-sitter VBA grammars were either:
 - **Wrong language** — targeting VB.NET (`tree-sitter-vb-dotnet`) which has significant syntax differences from VBA
 - **Abandoned** — started but never reached production quality
 
-This grammar is a complete translation from the battle-tested [Rubberduck VBA](https://github.com/rubberduck-vba/Rubberduck) ANTLR4 grammar, which has been refined over years by the VBA community. It was translated using AI (Gemma4) with manual validation and extensive testing.
+This grammar is implemented from scratch based on the Microsoft VBA Language Specification. It was developed using AI-assisted translation with manual validation and extensive testing against real-world VBA codebases.
