@@ -1,0 +1,4 @@
+id: all-nodes
+language: vba
+rule:
+  kind: source_file

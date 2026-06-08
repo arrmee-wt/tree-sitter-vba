@@ -1,0 +1,14 @@
+{
+  "grammars": [
+    {
+      "name": "vba",
+      "camelcase": "VBA",
+      "scope": "source.vba",
+      "file-types": [".bas", ".cls", ".frm"],
+      "highlights": []
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "tree-sitter-vba",
+  "version": "0.1.0",
+  "description": "Tree-sitter grammar for Visual Basic for Applications (VBA)",
+  "license": "GPL-3.0",
+  "main": "bindings/node",
+  "scripts": {
+    "build": "tree-sitter generate && node-gyp build",
+    "test": "tree-sitter test"
+  },
+  "dependencies": {
+    "nan": "^2.20.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.24.0"
+  }
+}

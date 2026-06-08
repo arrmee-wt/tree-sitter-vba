@@ -1,0 +1,8 @@
+ruleDirs:
+  - rules
+customLanguages:
+  vba:
+    libraryPath: C:\Users\admin\Documents\GitHub\tree-sitter-vba\tree_sitter_vba.dll
+    extensions:
+      - .bas
+    expandoChar: $

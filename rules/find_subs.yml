@@ -1,0 +1,4 @@
+id: find-subs
+language: vba
+rule:
+  kind: sub_statement

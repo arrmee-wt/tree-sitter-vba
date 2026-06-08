@@ -1,0 +1,6 @@
+node_modules/
+*.lib
+*.pdb
+*.exp
+grammar.test.js
+tree-sitter-vba.dll
