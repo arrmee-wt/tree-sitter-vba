@@ -103,7 +103,7 @@ zig cc -shared -O3 -I src src/parser.c -o tree_sitter_vba.dll -target x86_64-win
 
 ## License
 
-MIT. This grammar is an independent implementation based on the publicly available [Microsoft VBA Language Specification (MS-VBAL)](https://learn.microsoft.com/en-us/openspecs/microsoft_apis/ms-vbal/). It does not derive from any GPL-licensed ANTLR4 grammar or other third-party VBA parser implementation.
+GPL-3.0. Derived from [Rubberduck VBA](https://github.com/rubberduck-vba/Rubberduck) ANTLR4 grammar (Copyright Ulrich Wolffgang, Rubberduck Contributors), licensed under GPL-3.0.
 
 ## Why another VBA parser?
 
@@ -113,3 +113,4 @@ Existing tree-sitter VBA grammars were either:
 - **Abandoned** — started but never reached production quality
 
 This grammar is implemented from scratch based on the Microsoft VBA Language Specification. It was developed using AI-assisted translation with manual validation and extensive testing against real-world VBA codebases.
+

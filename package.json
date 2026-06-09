@@ -2,7 +2,7 @@
   "name": "@arrmee/tree-sitter-vba",
   "version": "1.0.0",
   "description": "Tree-sitter grammar for Visual Basic for Applications (VBA) — case-insensitive, with full statement coverage",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "author": "arrmee-wt <https://github.com/arrmee-wt>",
   "homepage": "https://github.com/arrmee-wt/tree-sitter-vba",
   "repository": {
