@@ -30,7 +30,7 @@ module.exports = grammar({
       $.option_statement, $.declare_statement,
       $.sub_statement, $.function_statement,
       $.property_statement, $.type_statement, $.enum_statement,
-      $.const_statement,
+      $.const_statement, $.dim_statement,
     ),
 
     option_statement: $ => seq(
@@ -46,7 +46,8 @@ module.exports = grammar({
     declare_statement: $ => seq(
       optional(choice(ci('Public'), ci('Private'))),
       ci('Declare'), choice(ci('Sub'), ci('Function')),
-      $.identifier, ci('Lib'), $.string_literal,
+      $.identifier, optional($._arg_list),
+      ci('Lib'), $.string_literal,
       optional(seq(ci('Alias'), $.string_literal)),
     ),
 
@@ -89,7 +90,9 @@ module.exports = grammar({
 
     _arg: $ => seq(
       optional(choice(ci('Optional'), ci('ByVal'), ci('ByRef'), ci('ParamArray'))),
-      $.identifier, optional(seq(ci('As'), $.type)),
+      $.identifier,
+      optional($._array_dim),
+      optional(seq(ci('As'), $.type)),
       optional(seq('=', $.expression)),
     ),
 

@@ -207,11 +207,19 @@
       "required": true,
       "types": [
         {
+          "type": "expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "type",
           "named": true
         }
       ]
@@ -769,6 +777,10 @@
         },
         {
           "type": "declare_statement",
+          "named": true
+        },
+        {
+          "type": "dim_statement",
           "named": true
         },
         {
