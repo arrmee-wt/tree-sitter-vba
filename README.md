@@ -39,7 +39,7 @@ tree-sitter-vba/
 
 ```bash
 # Install the grammar
-npm install tree-sitter-vba
+npm install @arrmee/tree-sitter-vba
 
 # Or generate from source
 npx tree-sitter generate
