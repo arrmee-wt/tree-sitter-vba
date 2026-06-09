@@ -1,8 +1,23 @@
 {
-  "name": "tree-sitter-vba",
-  "version": "0.1.0",
-  "description": "Tree-sitter grammar for Visual Basic for Applications (VBA)",
-  "license": "GPL-3.0",
+  "name": "@arrmee/tree-sitter-vba",
+  "version": "1.0.0",
+  "description": "Tree-sitter grammar for Visual Basic for Applications (VBA) — case-insensitive, with full statement coverage",
+  "license": "MIT",
+  "author": "arrmee-wt <https://github.com/arrmee-wt>",
+  "homepage": "https://github.com/arrmee-wt/tree-sitter-vba",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arrmee-wt/tree-sitter-vba.git"
+  },
+  "bugs": "https://github.com/arrmee-wt/tree-sitter-vba/issues",
+  "keywords": [
+    "tree-sitter",
+    "vba",
+    "parser",
+    "grammar",
+    "visual-basic",
+    "ast"
+  ],
   "main": "bindings/node",
   "scripts": {
     "build": "tree-sitter generate && node-gyp build",
