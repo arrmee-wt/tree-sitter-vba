@@ -55,6 +55,23 @@ Run ast-grep with this configuration and an input file, then check that the repo
 
 ## Source and build
 
+### Node.js
+
+```bash
+npm install @arrmee/tree-sitter-vba tree-sitter
+```
+
+```js
+const Parser = require('tree-sitter');
+const vba = require('@arrmee/tree-sitter-vba');
+const parser = new Parser();
+parser.setLanguage(vba);
+const tree = parser.parse('Attribute VB_Name = "Module1"\nPublic Sub Hello()\nEnd Sub\n');
+console.log(tree.rootNode.toString());
+```
+
+The package includes a prebuilt Node binding for Windows x64. Other environments need a compatible native build toolchain; the binding and parser must also be compatible with the installed `tree-sitter` runtime.
+
 - `grammar.js` — Tree-sitter grammar definition.
 - `src/parser.c`, `src/grammar.json`, `src/node-types.json` — generated parser and grammar metadata.
 - `tree_sitter_vba.dll`, `tree_sitter_vba_gnu.dll` — supplied Windows parser libraries.
@@ -74,10 +91,10 @@ The repository also documents a Windows build using Zig:
 zig cc -shared -O3 -I src src/parser.c -o tree_sitter_vba.dll -target x86_64-windows-msvc
 ```
 
-Validate a newly built library with the intended consumer and VBA samples. The package metadata names `@arrmee/tree-sitter-vba`; installation and language bindings have not been verified for every platform or runtime version.
+Validate a newly built library with the intended consumer and VBA samples. The package is published as `@arrmee/tree-sitter-vba` and provides a Node binding. Native compilation requires a C/C++ toolchain; installation and bindings have not been verified for every platform or runtime version.
 
 ## Origins and license
 
 The initial grammar and the current README and LICENSE identify the [Rubberduck VBA](https://github.com/rubberduck-vba/Rubberduck) ANTLR grammar as a source. The project currently declares GPL-3.0 in `package.json` and GPL version 3 or later in `LICENSE`; consult [LICENSE](LICENSE) and the upstream project when reusing or distributing it.
 
-The header in `grammar.js` still says MIT and describes an independent implementation. That conflicts with the repository's current license and attribution files and its development history; the header requires a separate provenance review. The Microsoft VBA language specification is also a reference for the grammar.
+The Microsoft VBA language specification is also a reference for the grammar. Earlier repository revisions contained conflicting MIT and independence statements; the current header reflects the repository's GPL attribution. A complete provenance review remains useful before combining or redistributing code.

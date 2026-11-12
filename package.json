@@ -1,7 +1,7 @@
 {
   "name": "@arrmee/tree-sitter-vba",
-  "version": "1.0.0",
-  "description": "Tree-sitter grammar for Visual Basic for Applications (VBA) — case-insensitive, with full statement coverage",
+  "version": "1.0.1",
+  "description": "Tree-sitter grammar for Visual Basic for Applications (VBA)",
   "license": "GPL-3.0",
   "author": "arrmee-wt <https://github.com/arrmee-wt>",
   "homepage": "https://github.com/arrmee-wt/tree-sitter-vba",
@@ -19,14 +19,19 @@
     "ast"
   ],
   "main": "bindings/node",
+  "files": ["grammar.js", "tree-sitter.json", "binding.gyp", "bindings/node", "prebuilds", "src", "rules", "sgconfig.yml", "test/corpus", "tree_sitter_vba.dll", "tree_sitter_vba_gnu.dll"],
   "scripts": {
     "build": "tree-sitter generate && node-gyp build",
-    "test": "tree-sitter test"
+    "install": "node-gyp-build",
+    "test": "tree-sitter test && node --test bindings/node/binding_test.js"
   },
   "dependencies": {
-    "nan": "^2.20.0"
+    "node-addon-api": "^8.2.1",
+    "node-gyp-build": "^4.8.2"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.24.0"
-  }
+    "tree-sitter": "^0.25.0"
+  },
+  "peerDependencies": { "tree-sitter": "^0.25.0" },
+  "peerDependenciesMeta": { "tree-sitter": { "optional": true } }
 }

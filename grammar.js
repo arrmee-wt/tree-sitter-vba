@@ -1,10 +1,6 @@
 // tree-sitter-vba — Tree-sitter grammar for Visual Basic for Applications (VBA)
-// Based on Microsoft VBA Language Specification (MS-VBAL)
-// License: MIT
-//
-// This grammar is an independent implementation based on the publicly available
-// Microsoft VBA language specification. It does not derive from any GPL-licensed
-// ANTLR4 grammar or other third-party VBA parser implementation.
+// Derived from the Rubberduck VBA ANTLR4 grammar; see LICENSE.
+// The Microsoft VBA language specification (MS-VBAL) is also a reference.
 
 function ci(word) {
   return new RegExp(word, 'i');
