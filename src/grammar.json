@@ -34,6 +34,14 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "attribute_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "compiler_directive"
+        },
+        {
+          "type": "SYMBOL",
           "name": "option_statement"
         },
         {
@@ -67,6 +75,172 @@
         {
           "type": "SYMBOL",
           "name": "dim_statement"
+        }
+      ]
+    },
+    "attribute_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "Attribute",
+          "flags": "i"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "."
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "identifier"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "string_literal"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "number_literal"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "boolean_literal"
+            }
+          ]
+        }
+      ]
+    },
+    "compiler_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "#"
+            },
+            {
+              "type": "PATTERN",
+              "value": "If",
+              "flags": "i"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "expression"
+            },
+            {
+              "type": "PATTERN",
+              "value": "Then",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "#"
+            },
+            {
+              "type": "PATTERN",
+              "value": "ElseIf",
+              "flags": "i"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "expression"
+            },
+            {
+              "type": "PATTERN",
+              "value": "Then",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "#"
+            },
+            {
+              "type": "PATTERN",
+              "value": "Else",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "#"
+            },
+            {
+              "type": "PATTERN",
+              "value": "End",
+              "flags": "i"
+            },
+            {
+              "type": "PATTERN",
+              "value": "If",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "#"
+            },
+            {
+              "type": "PATTERN",
+              "value": "Const",
+              "flags": "i"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "STRING",
+              "value": "="
+            },
+            {
+              "type": "SYMBOL",
+              "name": "expression"
+            }
+          ]
         }
       ]
     },
@@ -930,6 +1104,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "compiler_directive"
+          },
+          {
+            "type": "SYMBOL",
             "name": "expression"
           }
         ]
@@ -1021,6 +1199,10 @@
         {
           "type": "SYMBOL",
           "name": "mid_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "compiler_directive"
         },
         {
           "type": "SYMBOL",

@@ -27,10 +27,23 @@ module.exports = grammar({
     _line_continuation: $ => /_[ \t]*\r?\n/,
 
     _module_scope: $ => choice(
-      $.option_statement, $.declare_statement,
+      $.attribute_statement, $.compiler_directive, $.option_statement, $.declare_statement,
       $.sub_statement, $.function_statement,
       $.property_statement, $.type_statement, $.enum_statement,
       $.const_statement, $.dim_statement,
+    ),
+
+    attribute_statement: $ => seq(
+      ci('Attribute'), $.identifier, optional(seq('.', $.identifier)), '=',
+      choice($.string_literal, $.number_literal, $.boolean_literal),
+    ),
+
+    compiler_directive: $ => choice(
+      seq('#', ci('If'), $.expression, ci('Then')),
+      seq('#', ci('ElseIf'), $.expression, ci('Then')),
+      seq('#', ci('Else')),
+      seq('#', ci('End'), ci('If')),
+      seq('#', ci('Const'), $.identifier, '=', $.expression),
     ),
 
     option_statement: $ => seq(
@@ -106,7 +119,7 @@ module.exports = grammar({
       $.set_statement, $.let_statement, $.call_statement,
       $.exit_statement, $.goto_statement,
       $.dim_statement, $.const_statement,
-      $.label_statement, $.error_statement, $.mid_statement,
+      $.label_statement, $.error_statement, $.mid_statement, $.compiler_directive,
       $.expression,
     )),
 
@@ -118,7 +131,7 @@ module.exports = grammar({
       $.set_statement, $.let_statement, $.call_statement,
       $.exit_statement, $.goto_statement,
       $.dim_statement, $.const_statement,
-      $.label_statement, $.error_statement, $.mid_statement,
+      $.label_statement, $.error_statement, $.mid_statement, $.compiler_directive,
       $.expression,
     ),
 

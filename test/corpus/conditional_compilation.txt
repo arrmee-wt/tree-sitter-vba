@@ -1,0 +1,47 @@
+===================
+Conditional compilation around procedures
+===================
+#If VBA7 Then
+Public Sub Modern()
+End Sub
+#Else
+Public Sub Legacy()
+End Sub
+#End If
+---
+(source_file
+  (compiler_directive (expression (primary_expression (identifier))))
+  (sub_statement (identifier))
+  (compiler_directive)
+  (sub_statement (identifier))
+  (compiler_directive))
+
+===================
+Compiler directives inside a procedure
+===================
+#Const MyFlag = 1
+Public Sub Example()
+#If VBA7 And Win64 Then
+    Dim value64 As Long
+#ElseIf VBA7 Then
+    Dim value32 As Long
+#Else
+    Dim valueOld As Integer
+#End If
+End Sub
+---
+(source_file
+  (compiler_directive (identifier) (expression (primary_expression (number_literal))))
+  (sub_statement
+    (identifier)
+    (block
+      (compiler_directive
+        (expression (binary_expression
+          (expression (primary_expression (identifier)))
+          (expression (primary_expression (identifier))))))
+      (dim_statement (identifier) (type (identifier)))
+      (compiler_directive (expression (primary_expression (identifier))))
+      (dim_statement (identifier) (type (identifier)))
+      (compiler_directive)
+      (dim_statement (identifier) (type (identifier)))
+      (compiler_directive))))

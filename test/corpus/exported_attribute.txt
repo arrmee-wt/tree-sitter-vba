@@ -1,0 +1,35 @@
+===================
+Exported module attribute
+===================
+Attribute VB_Name = "Module1"
+Option Explicit
+Public Sub Hello()
+End Sub
+---
+(source_file
+  (attribute_statement
+    (identifier)
+    (string_literal))
+  (option_statement)
+  (sub_statement
+    (identifier)))
+
+===================
+Class attributes
+===================
+Attribute VB_Name = "Class1"
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+---
+(source_file
+  (attribute_statement (identifier) (string_literal))
+  (attribute_statement (identifier) (boolean_literal))
+  (attribute_statement (identifier) (boolean_literal)))
+
+===================
+Member attribute
+===================
+Attribute Run.VB_Description = "Runs a task"
+---
+(source_file
+  (attribute_statement (identifier) (identifier) (string_literal)))
