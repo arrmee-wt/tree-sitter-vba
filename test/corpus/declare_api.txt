@@ -1,0 +1,29 @@
+==================
+Windows API declarations
+==================
+
+Private Declare PtrSafe Function GetTickCount Lib "kernel32" () As Long
+Public Declare PtrSafe Sub Sleep Lib "kernel32" (ByVal milliseconds As Long)
+Private Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal className As String, ByVal windowName As String) As LongPtr
+
+---
+
+(source_file
+  (declare_statement
+    (identifier)
+    (string_literal)
+    (type (identifier)))
+  (declare_statement
+    (identifier)
+    (string_literal)
+    (identifier)
+    (type (identifier)))
+  (declare_statement
+    (identifier)
+    (string_literal)
+    (string_literal)
+    (identifier)
+    (type (identifier))
+    (identifier)
+    (type (identifier))
+    (type (identifier))))

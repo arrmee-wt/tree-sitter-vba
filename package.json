@@ -19,11 +19,25 @@
     "ast"
   ],
   "main": "bindings/node",
-  "files": ["grammar.js", "tree-sitter.json", "binding.gyp", "bindings/node", "prebuilds", "src", "rules", "sgconfig.yml", "test/corpus", "tree_sitter_vba.dll", "tree_sitter_vba_gnu.dll"],
+  "files": [
+    "grammar.js",
+    "tree-sitter.json",
+    "binding.gyp",
+    "bindings/node",
+    "prebuilds",
+    "src",
+    "rules",
+    "sgconfig.yml",
+    "test/corpus",
+    "tree_sitter_vba.dll",
+    "tree_sitter_vba_gnu.dll",
+    "test/ast-grep-check.cjs"
+  ],
   "scripts": {
     "build": "tree-sitter generate && node-gyp build",
     "install": "node-gyp-build",
-    "test": "tree-sitter test && node --test bindings/node/binding_test.js"
+    "test": "tree-sitter test && node --test bindings/node/binding_test.js",
+    "test:ast-grep": "node test/ast-grep-check.cjs"
   },
   "dependencies": {
     "node-addon-api": "^8.2.1",
@@ -32,6 +46,12 @@
   "devDependencies": {
     "tree-sitter": "^0.25.0"
   },
-  "peerDependencies": { "tree-sitter": "^0.25.0" },
-  "peerDependenciesMeta": { "tree-sitter": { "optional": true } }
+  "peerDependencies": {
+    "tree-sitter": "^0.25.0"
+  },
+  "peerDependenciesMeta": {
+    "tree-sitter": {
+      "optional": true
+    }
+  }
 }

@@ -207,6 +207,44 @@
     }
   },
   {
+    "type": "class_header",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "class_header_property",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "class_header_property",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "compiler_directive",
     "named": true,
     "fields": {},
@@ -477,6 +515,121 @@
         },
         {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "form_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "form_block",
+          "named": true
+        },
+        {
+          "type": "form_control_type",
+          "named": true
+        },
+        {
+          "type": "form_guid",
+          "named": true
+        },
+        {
+          "type": "form_property",
+          "named": true
+        },
+        {
+          "type": "form_property_block",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "form_control_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "form_header",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "form_block",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "form_property",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "form_resource_offset",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "form_property_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "form_property",
           "named": true
         },
         {
@@ -826,6 +979,10 @@
           "named": true
         },
         {
+          "type": "class_header",
+          "named": true
+        },
+        {
           "type": "compiler_directive",
           "named": true
         },
@@ -843,6 +1000,10 @@
         },
         {
           "type": "enum_statement",
+          "named": true
+        },
+        {
+          "type": "form_header",
           "named": true
         },
         {
@@ -1073,6 +1234,14 @@
   },
   {
     "type": "empty_literal",
+    "named": true
+  },
+  {
+    "type": "form_guid",
+    "named": true
+  },
+  {
+    "type": "form_resource_offset",
     "named": true
   },
   {

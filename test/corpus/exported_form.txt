@@ -1,0 +1,61 @@
+==================
+Exported UserForm metadata
+==================
+
+VERSION 5.00
+Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} UserForm1
+   Caption = "Example"
+   ClientHeight = 3120
+   OleObjectBlob = "UserForm1.frx":0000
+End
+Attribute VB_Name = "UserForm1"
+Private Sub UserForm_Initialize()
+End Sub
+
+---
+
+(source_file
+  (form_header
+    (number_literal)
+    (form_block
+      (form_guid)
+      (identifier)
+      (form_property (identifier) (string_literal))
+      (form_property (identifier) (number_literal))
+      (form_property (identifier) (string_literal) (form_resource_offset))))
+  (attribute_statement (identifier) (string_literal))
+  (sub_statement (identifier)))
+
+==================
+Nested form control and font metadata
+==================
+
+VERSION 5.00
+Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} UserForm1
+   Begin MSForms.Frame Frame1
+      Caption = "Details"
+      BeginProperty Font
+         Name = "Tahoma"
+         Size = 8.25
+      EndProperty
+   End
+End
+Attribute VB_Name = "UserForm1"
+
+---
+
+(source_file
+  (form_header
+    (number_literal)
+    (form_block
+      (form_guid)
+      (identifier)
+      (form_block
+        (form_control_type (identifier) (identifier))
+        (identifier)
+        (form_property (identifier) (string_literal))
+        (form_property_block
+          (identifier)
+          (form_property (identifier) (string_literal))
+          (form_property (identifier) (number_literal))))))
+  (attribute_statement (identifier) (string_literal)))

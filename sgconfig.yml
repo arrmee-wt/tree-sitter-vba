@@ -2,9 +2,9 @@ ruleDirs:
   - rules
 customLanguages:
   vba:
-    libraryPath: ./tree_sitter_vba_gnu.dll
+    libraryPath: ./tree_sitter_vba.dll
     extensions:
-      - .bas
-      - .cls
-      - .frm
+      - bas
+      - cls
+      - frm
     expandoChar: $

@@ -23,10 +23,33 @@ module.exports = grammar({
     _line_continuation: $ => /_[ \t]*\r?\n/,
 
     _module_scope: $ => choice(
-      $.attribute_statement, $.compiler_directive, $.option_statement, $.declare_statement,
+      $.class_header, $.form_header, $.attribute_statement, $.compiler_directive, $.option_statement, $.declare_statement,
       $.sub_statement, $.function_statement,
       $.property_statement, $.type_statement, $.enum_statement,
       $.const_statement, $.dim_statement,
+    ),
+
+    class_header: $ => seq(
+      ci('VERSION'), $.number_literal, ci('CLASS'),
+      ci('BEGIN'), repeat($.class_header_property), ci('END'),
+    ),
+
+    class_header_property: $ => seq($.identifier, '=', optional('-'), $.number_literal),
+
+    form_header: $ => seq(ci('VERSION'), $.number_literal, $.form_block),
+
+    form_block: $ => seq(
+      ci('BEGIN'), choice($.form_guid, $.form_control_type), $.identifier,
+      repeat(choice($.form_property, $.form_property_block, $.form_block)), ci('END'),
+    ),
+
+    form_control_type: $ => seq($.identifier, repeat(seq('.', $.identifier))),
+    form_property_block: $ => seq(ci('BeginProperty'), $.identifier, repeat($.form_property), ci('EndProperty')),
+    form_guid: $ => /\{[0-9A-Fa-f-]+\}/,
+    form_resource_offset: $ => /[0-9A-Fa-f]+/,
+    form_property: $ => seq(
+      $.identifier, '=', optional('-'), choice($.number_literal, $.string_literal),
+      optional(seq(':', $.form_resource_offset)),
     ),
 
     attribute_statement: $ => seq(
@@ -54,10 +77,12 @@ module.exports = grammar({
 
     declare_statement: $ => seq(
       optional(choice(ci('Public'), ci('Private'))),
-      ci('Declare'), choice(ci('Sub'), ci('Function')),
-      $.identifier, optional($._arg_list),
+      ci('Declare'), optional(ci('PtrSafe')), choice(ci('Sub'), ci('Function')),
+      $.identifier,
       ci('Lib'), $.string_literal,
       optional(seq(ci('Alias'), $.string_literal)),
+      optional($._arg_list),
+      optional(seq(ci('As'), $.type)),
     ),
 
     sub_statement: $ => seq(
@@ -252,7 +277,7 @@ module.exports = grammar({
       /\d+\.\d*([eE][+-]?\d+)?/, /\d+[eE][+-]?\d+/, /\d+/,
     )),
 
-    string_literal: $ => token(seq('"', repeat(choice(/[^"]/, '""')), '"')),
+    string_literal: $ => token(seq('"', repeat(choice(/[^"\r\n]/, '""')), '"')),
     boolean_literal: $ => choice(ci('True'), ci('False')),
     nothing_literal: $ => ci('Nothing'),
     null_literal: $ => ci('Null'),
