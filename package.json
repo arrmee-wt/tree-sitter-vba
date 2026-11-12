@@ -1,6 +1,6 @@
 {
   "name": "@arrmee/tree-sitter-vba",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tree-sitter grammar for Visual Basic for Applications (VBA)",
   "license": "GPL-3.0",
   "author": "arrmee-wt <https://github.com/arrmee-wt>",
